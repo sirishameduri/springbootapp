@@ -76,9 +76,9 @@ pipeline {
     stage ('Push Docker Image') {
         steps {
             script {
-                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 656952365822.dkr.ecr.us-east-1.amazonaws.com'
-                sh 'docker tag myrepo:latest 656952365822.dkr.ecr.us-east-1.amazonaws.com/ncplrepo:latest'
-                sh 'docker push 656952365822.dkr.ecr.us-east-1.amazonaws.com/ncplrepo:latest'
+                sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/y8p8e5n8'
+                sh 'docker tag my-public-repo:latest public.ecr.aws/y8p8e5n8/my-public-repo:latest'
+                sh 'docker push public.ecr.aws/y8p8e5n8/my-public-repo:latest'
             }
         }
     }
