@@ -1,4 +1,4 @@
-def registry  ='https://varedla.jfrog.io/'
+def registry  ='https://sireejfrog.jfrog.io/'
 pipeline {
     tools {
         maven "Maven3"
@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout From Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/bkrrajmali/springbootapp.git'
+                git branch: 'main', url: 'https://github.com/sirishameduri/springbootapp.git'
             }
         }
         stage('Maven Build') {
@@ -29,7 +29,7 @@ pipeline {
             steps {
                script {
                 withSonarQubeEnv('sonar-server') {
-                sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=springbootapp -Dsonar.projectKey=bkrrajmali_springbootapp '''
+                sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=springbootapp -Dsonar.projectKey=sirishameduri_springbootapp '''
                 }
                }
             }
@@ -51,7 +51,7 @@ pipeline {
                               "files": [
                                 {
                                   "pattern": "target/springbootApp.jar",
-                                  "target": "ncpl-libs-release",
+                                  "target": "sireemaven-libs-release",
                                   "flat": "false",
                                   "props" : "${properties}",
                                   "exclusions": [ "*.sha1", "*.md5"]
