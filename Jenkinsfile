@@ -77,7 +77,7 @@ pipeline {
         steps {
             script {
                 sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/y8p8e5n8'
-                sh 'docker tag my-public-repo:latest public.ecr.aws/y8p8e5n8/my-public-repo:latest'
+                sh 'docker tag myrepo:latest public.ecr.aws/y8p8e5n8/my-public-repo:latest'
                 sh 'docker push public.ecr.aws/y8p8e5n8/my-public-repo:latest'
             }
         }
